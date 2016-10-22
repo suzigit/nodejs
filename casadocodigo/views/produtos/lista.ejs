@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<title>lista de produtos</title>
+
+	</head>
+	<body>
+		com content negotiation
+
+		<table class="table table-condensed table-bordered table-striped table-hover">
+			<thead>
+			<tr>
+				<th>Titulo</th>
+				<th>Preço</th>
+				<th>Descrição</th>
+				<th></th>
+			</tr>
+			</thead>
+		
+		<tbody>
+			<% for(var i=0; i<lista.length; i++) { %>
+				<tr>
+						<td><a href="/produtos/form/<%=lista[i].id%>"><%= lista[i].titulo%></a></td>
+						<td><%= lista[i].preco%></td>
+						<td><p><%= lista[i].descricao%></p></td>
+						<td><form method="POST" action="/produtos/<%=lista[i].id%>">
+							<input type="hidden" name="_method" value="delete">
+							<button type="submit" class="btn btn-danger">Remover</button>
+						</form></td>
+				</tr>
+			<% } %>
+		</tbody>
+
+	</table>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io();
+		socket.on('novoLivro', function(livro) {
+			alert(livro.titulo);
+		}); 
+	</script>
+
+
+	</body>
+</html>

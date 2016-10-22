@@ -1,0 +1,26 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive",
+    "start": "nodemon server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "co": "^4.6.0",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "mysql": "^2.11.1",
+    "socket.io": "^1.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
+  }
+}

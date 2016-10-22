@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.css">
+		<title>lista de produtos</title>
+	</head>
+	<body>
+
+		<ul>
+			<%if (locals.validationErrors) { %>
+			<%for(var i=0; i<validationErrors.length;i++) {%>
+			<li class="alert alert-danger"><%=validationErrors[i].msg%></li>
+			<%}%>			
+			<%}%>			
+		</ul>		
+		<%if(livro.id) {%>
+		<form action="/produtos/<%=livro.id%>" method="post" class="well" role="form">
+			<input type="hidden" name="_method" value="put">
+			<input type="hidden" name="id" value="<%=livro.id%>">
+		<%} else {%>
+		<form action="/produtos" method="post" class="well" role="form">
+		<%} %>
+			<div class="form-group">
+					<label for="titulo">Titulo</label>
+					<div class="input-group">
+						<span class="input-group-addon">
+						<i class="glyphicon glyphicon-unchecked"></i>
+						</span>
+						<input type="text" name="titulo" value="<%=livro.titulo%>" placeholder="titulo do livro"/>
+					</div>
+			</div>
+			<div class="form-group">
+				<label for="preco">Preço</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+					<i class="glyphicon glyphicon-unchecked"></i>
+					</span>
+					<input type="text" name="preco" value="<%=livro.preco%>" placeholder="valor do livro"/>
+				</div>
+			</div>
+			<div class="form-group">
+					<label for="descricao">Descricao</label>
+					<div class="input-group">
+							<span class="input-group-addon">
+								<i class="glyphicon glyphicon-unchecked"></i>
+							</span>
+							<textarea name="descricao" value="<%=livro.descricao%>"></textarea>
+					</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Gravar</button>
+		</form>	
+	</body>
+</html>
